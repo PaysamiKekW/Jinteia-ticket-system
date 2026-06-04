@@ -1,4 +1,4 @@
-name: Assign Character Labels
+name: Assign Character Label
 
 on:
     issues:
@@ -21,26 +21,28 @@ jobs:
                       const ALLOWED_PREFIX = "Char-";
 
                       function toLabel(characterName) {
-                        return (
+                      return (
                           ALLOWED_PREFIX +
                           characterName
-                            .trim()
-                            .replace(/\s+/g, "-")
-                            .replace(/\//g, "-")
-                        );
+                          .trim()
+                          .replace(/\s+/g, "-")
+                          .replace(/\//g, "-")
+                      );
                       }
 
-                      // Extract checked checkbox items from GitHub issue form
-                      const checkedItems = [...body.matchAll(/- \[x\] (.+)/g)]
-                        .map(m => m[1].trim());
+                      const match = body.split("### Which characters are affected?")[1];
+                      if (!match) return;
 
+                      const section = match.split("\n###")[0];
+
+                      const checkedItems = [...section.matchAll(/- \[x\] (.+)/g)].map(m => m[1].trim());
                       const labelsToAdd = checkedItems.map(toLabel);
 
-                      if (labelsToAdd.length === 0) return;
-
-                      await github.rest.issues.addLabels({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        issue_number: context.issue.number,
-                        labels: labelsToAdd
-                      });
+                      if (labelsToAdd.length > 0) {
+                        await github.rest.issues.addLabels({
+                            owner: context.repo.owner,
+                            repo: context.repo.repo,
+                            issue_number: context.issue.number,
+                            labels: labelsToAdd
+                        });
+                      }

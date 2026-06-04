@@ -1,0 +1,46 @@
+name: Assign Character Labels
+
+on:
+    issues:
+        types: [opened, edited]
+
+permissions:
+    issues: write
+
+jobs:
+    label:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Assign character labels from checkboxes
+              uses: actions/github-script@v8
+              with:
+                  script: |
+                      const body = context.payload.issue.body || "";
+
+                      const ALLOWED_PREFIX = "Char-";
+
+                      function toLabel(characterName) {
+                        return (
+                          ALLOWED_PREFIX +
+                          characterName
+                            .trim()
+                            .replace(/\s+/g, "-")
+                            .replace(/\//g, "-")
+                        );
+                      }
+
+                      // Extract checked checkbox items from GitHub issue form
+                      const checkedItems = [...body.matchAll(/- \[x\] (.+)/g)]
+                        .map(m => m[1].trim());
+
+                      const labelsToAdd = checkedItems.map(toLabel);
+
+                      if (labelsToAdd.length === 0) return;
+
+                      await github.rest.issues.addLabels({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: context.issue.number,
+                        labels: labelsToAdd
+                      });

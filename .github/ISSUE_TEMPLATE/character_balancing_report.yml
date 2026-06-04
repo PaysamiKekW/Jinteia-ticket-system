@@ -14,27 +14,27 @@ body:
       options:
         - label: I've checked for duplicate open **and closed** issues by using the search function of the [issue tracker](https://github.com/PaysamiKekW/Jinteia-ticket-system/issues?q=is%3Aissue)
           required: true
-  - type: dropdown
-    id: character
+  - type: checkboxes
+    id: characters
     attributes:
-      label: Which character is this issue about?
+      label: Which characters are affected?
       options:
-        - Dragon Starfall
-        - Dragon Talismans
-        - Healer Balls
-        - Healer Combo
-        - Archer Arrow Rain
-        - Archer Chains
-        - Dagger Combo
-        - Dagger Darts
-        - Aura Three-way cut
-        - Aura Cyclone
-        - Mental Stump
-        - Mental Thorns
-        - BM Spirit
-        - BM Flamefield
-        - WP Whirlwind
-        - WP Curse
+        - label: Dragon Starfall
+        - label: Dragon Talismans
+        - label: Healer Balls
+        - label: Healer Combo
+        - label: Archer Arrow Rain
+        - label: Archer Chains
+        - label: Dagger Combo
+        - label: Dagger Darts
+        - label: Aura Three-way cut
+        - label: Aura Cyclone
+        - label: Mental Stump
+        - label: Mental Thorns
+        - label: BM Spirit
+        - label: BM Flamefield
+        - label: WP Whirlwind
+        - label: WP Curse
     validations:
       required: true
   - type: textarea

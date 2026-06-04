@@ -1,0 +1,68 @@
+name: Feature Suggestion
+description: Suggest a new feature, system, quality-of-life improvement, or user experience enhancement.
+labels:
+  - TOPIC-Suggestion
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please try to fill in as much of the form below as you're able to. Fields marked with an asterisk (*) are required.
+
+  - type: checkboxes
+    id: duplicates
+    attributes:
+      label: Check for duplicates
+      options:
+        - label: I've checked for duplicate open **and closed** issues by using the search function of the [issue tracker](https://github.com/PaysamiKekW/Jinteia-ticket-system/issues?q=is%3Aissue)
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your suggestion related to a problem?
+      description: Describe the problem, limitation, or frustration that led to this suggestion.
+      placeholder: |
+        E.g. I find it difficult to navigate auction house because [...].
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What solution would you like to see?
+      description: Clearly describe the feature, improvement, or change you would like implemented.
+      placeholder: |
+        E.g. Add advanced filtering options that allow users to search for items based on specific criteria like [...].
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Have you considered any alternatives?
+      description: Describe any alternative solutions, workarounds, or approaches you have considered.
+      placeholder: |
+        E.g. A simpler search bar with keyword matching could partially solve the issue.
+    validations:
+      required: false
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: How would this improve the system?
+      description: Explain the expected benefits for users or administrators.
+      placeholder: |
+        E.g. This would make it much faster to find relevant items and improve overall usability.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Attach screenshots, mockups, examples, references, or any other information that may help explain the suggestion.
+      placeholder: |
+        You can attach files/images directly or provide links to externally hosted content.
+    validations:
+      required: false

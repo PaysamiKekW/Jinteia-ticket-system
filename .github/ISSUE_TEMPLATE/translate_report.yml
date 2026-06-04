@@ -1,0 +1,74 @@
+name: Translation / Text Bug
+description: Report typos, missing text, incorrect translations, or text layout issues.
+labels:
+  - TOPIC-Description
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please try to fill in as much of the form below as you're able to. Fields marked with an asterisk (*) are required.
+
+  - type: checkboxes
+    id: duplicates
+    attributes:
+      label: Check for duplicates
+      options:
+        - label: I've checked for duplicate open **and closed** issues by using the search function of the [issue tracker](https://github.com/PaysamiKekW/Jinteia-ticket-system/issues?q=is%3Aissue)
+          required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Where is the text located?
+      description: Specify where the text appears in the game or application.
+      placeholder: |
+        E.g. Main Menu → Settings button
+        E.g. Inventory tooltip
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: What kind of text issue is this?
+      options:
+        - Typo / Spelling Mistake
+        - Grammar Issue
+        - Incorrect Translation
+        - Missing Translation
+        - Missing Text
+        - Text Overflow / Layout Issue
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_text
+    attributes:
+      label: Current text
+      description: What does the text currently say?
+      placeholder: |
+        Write the wrong text exactly as it appears.
+    validations:
+      required: true
+
+  - type: textarea
+    id: corrected_text
+    attributes:
+      label: Suggested correction
+      description: What should the text say instead?
+      placeholder: |
+        Provide the corrected wording, translation, or formatting.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Screenshot / Additional context
+      description: Attach screenshots or provide any additional information that may help identify the issue.
+      placeholder: |
+        You can attach files/images directly or provide links to externally hosted content.
+    validations:
+      required: false
